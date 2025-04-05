@@ -1,0 +1,134 @@
+@model IEnumerable<FutureTech_Academy.Models.Student>
+@{
+    ViewData["Title"] = "Students";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Student Management</h2>
+        <a asp-action="Create" class="btn btn-primary">Add New Student</a>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="Search" method="post" class="mb-4">
+                <div class="input-group">
+                    <input type="text" name="searchTerm" class="form-control" placeholder="Search by name or email...">
+                    <button type="submit" class="btn btn-outline-secondary">Search</button>
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Profile</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile Number</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var student in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(student?.ProfileImageUrl))
+                                    {
+                                        <img src="@student.ProfileImageUrl" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                                    }
+                                    else
+                                    {
+                                        <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            @(student?.FirstName?[0])@(student?.LastName?[0])
+                                        </div>
+                                    }
+                                </td>
+                                <td>@student?.FirstName @student?.LastName</td>
+                                <td>@student?.Email</td>
+                                <td>@student?.MobileNumber</td>
+                                <td>
+                                    <span class="badge @(student?.EnrolmentStatus == "Active" ? "bg-success" : "bg-danger")">
+                                        @student?.EnrolmentStatus
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a asp-action="Edit" asp-route-id="@student?.id" class="btn btn-sm btn-outline-primary">Edit</a>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" 
+                                                onclick="confirmDelete('@student?.id', '@student?.FirstName @student?.LastName')">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete <span id="studentName"></span>?
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="checkbox" id="permanentDelete">
+                    <label class="form-check-label" for="permanentDelete">
+                        Permanently delete (cannot be undone)
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="post">
+                    <input type="hidden" name="id" id="studentId">
+                    <input type="hidden" name="permanentDelete" id="permanentDeleteValue">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDelete(id, name) {
+            document.getElementById('studentName').textContent = name;
+            document.getElementById('studentId').value = id;
+            document.getElementById('deleteForm').action = '@Url.Action("Delete")';
+            
+            const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+            modal.show();
+        }
+
+        document.getElementById('permanentDelete').addEventListener('change', function() {
+            document.getElementById('permanentDeleteValue').value = this.checked;
+        });
+    </script>
+} 
