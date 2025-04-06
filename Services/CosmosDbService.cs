@@ -221,7 +221,7 @@ namespace FutureTech_Academy.Services
                 if (!string.IsNullOrEmpty(student.ProfileImageUrl) && 
                     student.ProfileImageUrl.Contains("blob.core.windows.net"))
                 {
-                    await _blobStorageService.DeleteFileAsync(student.ProfileImageUrl);
+                    //await _blobStorageService.DeleteBlobAsync(student.ProfileImageUrl);
                 }
 
                 var response = await _container.UpsertItemAsync(student, new PartitionKey(student.id));
@@ -268,10 +268,15 @@ namespace FutureTech_Academy.Services
                     return string.Empty;
                 }
 
-                // Upload the file to Azure Blob Storage
                 var fileName = $"{studentId}-{file.FileName}";
-                var imageUrl = await _blobStorageService.UploadFileAsync(file, fileName);
-                
+                string imageUrl = string.Empty;
+
+                using (var stream = file.OpenReadStream())
+                {
+                    var url = await _blobStorageService.UploadPhotoAsync(stream, fileName);
+                    imageUrl = url; 
+                }
+
                 Console.WriteLine($"Profile image uploaded successfully: {imageUrl}");
                 return imageUrl;
             }
@@ -281,5 +286,6 @@ namespace FutureTech_Academy.Services
                 return string.Empty;
             }
         }
+
     }
 } 
