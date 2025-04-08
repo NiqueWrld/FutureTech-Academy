@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using Firebase.Auth;
+using FirebaseAdmin.Auth;
 using FutureTech_Academy.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -28,5 +29,19 @@ public class AuthService(FirebaseAuthClient firebaseAuth) : IAuthService
         return Task.FromResult(firebaseAuth.User.Info);
     }
 
-    public void SignOut() => firebaseAuth.SignOut();
+    public void SignOut()
+    {
+        try
+        {
+            if (firebaseAuth?.User != null)
+            {
+                firebaseAuth.SignOut();
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log the exception if needed
+            Console.WriteLine($"Error during sign out: {ex.Message}");
+        }
+    }
 }

@@ -3,50 +3,51 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="text-center">Login</h3>
-                </div>
-                <div class="card-body">
-                    @if (TempData["SuccessMessage"] != null)
-                    {
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            @TempData["SuccessMessage"]
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    }
+<div class="flex w-full items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+        <h3 class="text-2xl font-bold text-center mb-6">Login</h3>
 
-                    <form asp-action="Login" method="post">
-                        <div asp-validation-summary="All" class="text-danger"></div>
-                        
-                        <div class="form-group mb-3">
-                            <label asp-for="Email" class="control-label"></label>
-                            <input asp-for="Email" class="form-control" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label asp-for="Password" class="control-label"></label>
-                            <input asp-for="Password" class="form-control" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary">Login</button>
-                        </div>
-                    </form>
-                    <div class="text-center mt-3">
-                        <p>Don't have an account? <a asp-action="SignUp">Sign Up</a></p>
-                    </div>
-                </div>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline">@TempData["SuccessMessage"]</span>
+                <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3" data-bs-dismiss="alert" aria-label="Close">
+                    <svg class="fill-current h-6 w-6 text-green-700" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <title>Close</title>
+                        <path d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 00-1.414 1.414L8.586 8.586l-2.934 2.934a1 1 0 101.414 1.414L10 10.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
+                    </svg>
+                </button>
             </div>
+        }
+
+        <form asp-action="Login" method="post" class="space-y-4">
+            <div asp-validation-summary="All" class="text-red-500 text-sm mb-2"></div>
+
+            <div>
+                <label asp-for="Email" class="block text-gray-700 font-medium mb-1"></label>
+                <input asp-for="Email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                <span asp-validation-for="Email" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div>
+                <label asp-for="Password" class="block text-gray-700 font-medium mb-1"></label>
+                <input asp-for="Password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                <span asp-validation-for="Password" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200">Login</button>
+            </div>
+        </form>
+
+        <div class="text-center mt-4 text-sm text-gray-600">
+            <p>Don't have an account? <a asp-action="SignUp" class="text-blue-500 hover:underline">Sign Up</a></p>
         </div>
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-} 
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

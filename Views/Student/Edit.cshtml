@@ -4,64 +4,73 @@
     ViewData["Title"] = "Edit Student";
 }
 
-<div class="container mt-4">
-    <h2>Edit Student</h2>
-    <hr />
+<div class="container mx-auto p-4 w-full">
+    <h2 class="text-2xl font-semibold mb-4">Edit Student</h2>
+    <hr class="border-t-2 mb-4" />
 
-    <div class="row">
-        <div class="col-md-6">
-            <form asp-action="Edit" enctype="multipart/form-data">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <form asp-action="Edit" enctype="multipart/form-data" class="space-y-4">
+                <div asp-validation-summary="ModelOnly" class="text-red-500 mb-4"></div>
                 <input type="hidden" asp-for="id" />
 
-                <div class="form-group mb-3">
-                    <label asp-for="FirstName" class="control-label"></label>
-                    <input asp-for="FirstName" class="form-control" />
-                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                <!-- First Name -->
+                <div class="form-group">
+                    <label asp-for="FirstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                    <input asp-for="FirstName" class="form-control w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    <span asp-validation-for="FirstName" class="text-red-500 text-sm"></span>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label asp-for="LastName" class="control-label"></label>
-                    <input asp-for="LastName" class="form-control" />
-                    <span asp-validation-for="LastName" class="text-danger"></span>
+                <!-- Last Name -->
+                <div class="form-group">
+                    <label asp-for="LastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                    <input asp-for="LastName" class="form-control w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    <span asp-validation-for="LastName" class="text-red-500 text-sm"></span>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                <!-- Email -->
+                <div class="form-group">
+                    <label asp-for="Email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input asp-for="Email" class="form-control w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    <span asp-validation-for="Email" class="text-red-500 text-sm"></span>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label asp-for="MobileNumber" class="control-label"></label>
-                    <input asp-for="MobileNumber" class="form-control" />
-                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                <!-- Mobile Number -->
+                <div class="form-group">
+                    <label asp-for="MobileNumber" class="block text-sm font-medium text-gray-700">Mobile Number</label>
+                    <input asp-for="MobileNumber" class="form-control w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    <span asp-validation-for="MobileNumber" class="text-red-500 text-sm"></span>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label asp-for="EnrolmentStatus" class="control-label"></label>
-                    <select asp-for="EnrolmentStatus" class="form-control">
+                <!-- Enrolment Status -->
+                <div class="form-group">
+                    <label asp-for="EnrolmentStatus" class="block text-sm font-medium text-gray-700">Enrolment Status</label>
+                    <select asp-for="EnrolmentStatus" class="form-control w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
                     </select>
-                    <span asp-validation-for="EnrolmentStatus" class="text-danger"></span>
+                    <span asp-validation-for="EnrolmentStatus" class="text-red-500 text-sm"></span>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label asp-for="ProfileImageUrl" class="control-label"></label>
-                    <input type="file" name="profileImage" class="form-control" accept="image/jpeg,image/png" />
-                    <span asp-validation-for="ProfileImageUrl" class="text-danger"></span>
+                <!-- Profile Image Upload -->
+                <div class="form-group">
+                    <label asp-for="ProfileImageUrl" class="block text-sm font-medium text-gray-700">Profile Image</label>
+                    <input type="file" name="profileImage" class="form-control w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" accept="image/jpeg,image/png" />
+                    <span asp-validation-for="ProfileImageUrl" class="text-red-500 text-sm"></span>
                     @if (!string.IsNullOrEmpty(Model.ProfileImageUrl))
                     {
                         <div class="mt-2">
-                            <img src="@Model.ProfileImageUrl" alt="Profile Image" class="img-thumbnail" style="max-width: 200px;" />
+                            <img src="@Model.ProfileImageUrl" alt="Profile Image" class="w-full max-w-xs rounded-md shadow-md" />
                         </div>
                     }
                 </div>
 
-                <div class="form-group mb-3">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                <!-- Submit and Back Buttons -->
+                <div class="form-group flex space-x-4">
+                    <input type="submit" value="Save" class="btn btn-primary px-6 py-2 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    <a asp-action="Index" class="btn btn-secondary px-6 py-2 bg-gray-600 text-white rounded-md shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        Back to List
+                    </a>
                 </div>
             </form>
         </div>
@@ -69,5 +78,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-} 
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

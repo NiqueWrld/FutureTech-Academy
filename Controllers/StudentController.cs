@@ -205,5 +205,35 @@ namespace FutureTech_Academy.Controllers
             var students = await _studentService.SearchStudentsAsync(searchTerm);
             return View("Index", students);
         }
+
+        // GET: Student/Details/5
+        public async Task<IActionResult> Details(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                var student = await _studentService.GetStudentByIdAsync(id);
+                if (student == null)
+                {
+                    return NotFound();
+                }
+
+                return View(student);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in StudentController.Details: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+                }
+                TempData["ErrorMessage"] = "An error occurred while retrieving student details.";
+                return RedirectToAction(nameof(Index));
+            }
+        }
     }
 } 

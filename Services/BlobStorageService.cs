@@ -85,12 +85,6 @@ namespace FutureTech_Academy.Services
             // Create the SAS URL by combining the blob URL and the SAS token
             var sasUrl = blobClient.Uri + sasToken;
 
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = sasUrl,
-                UseShellExecute = true
-            });
-
             return sasUrl;
         }
 

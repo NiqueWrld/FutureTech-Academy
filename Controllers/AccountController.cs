@@ -106,7 +106,7 @@ namespace FutureTech_Academy.Controllers
             return View(model);
         }
 
-        [HttpGet("Logout")]
+        [HttpPost("Logout")]
         public async Task<IActionResult> Logout()
         {
             _authService.SignOut();
