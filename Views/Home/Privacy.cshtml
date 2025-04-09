@@ -2,124 +2,166 @@
     ViewData["Title"] = "Privacy Policy - FutureTech Academy";
 }
 
-<div class="container mx-auto px-4 py-12 max-w-4xl">
-    <h1 class="text-4xl font-bold mb-8">Privacy Policy</h1>
-    
-    <div class="prose prose-lg">
-        <p class="text-gray-600 mb-6">Last updated: @DateTime.Now.ToString("MMMM d, yyyy")</p>
+<div class="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-200 min-h-screen py-16 w-full">
+    <div class="container mx-auto px-4 py-12 max-w-4xl relative">
+        <!-- Decorative pattern overlay -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none">
+            <div class="absolute inset-0" style="background-image: radial-gradient(rgba(255, 193, 7, 0.4) 1px, transparent 1px); background-size: 30px 30px;"></div>
+        </div>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">1. Introduction</h2>
-            <p class="mb-4">FutureTech Academy ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.</p>
-        </section>
+        <div class="relative">
+            <!-- Header -->
+            <div class="flex flex-col items-center mb-8">
+                <span class="text-amber-400 text-sm font-semibold tracking-wider uppercase">Legal Information</span>
+                <h1 class="text-4xl font-bold text-white mt-2">Privacy Policy</h1>
+                <div class="h-1 w-24 bg-gradient-to-r from-amber-500 to-amber-300 rounded-full mt-4 mb-2"></div>
+            </div>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">2. Information We Collect</h2>
-            <h3 class="text-xl font-semibold mb-2">2.1 Personal Information</h3>
-            <p class="mb-4">We may collect personal information that you voluntarily provide to us when you:</p>
-            <ul class="list-disc pl-6 mb-4 space-y-2">
-                <li>Register for an account</li>
-                <li>Enroll in our courses</li>
-                <li>Subscribe to our newsletter</li>
-                <li>Contact us for support</li>
-                <li>Participate in surveys or promotions</li>
-            </ul>
-            <p class="mb-4">This information may include:</p>
-            <ul class="list-disc pl-6 mb-4 space-y-2">
-                <li>Name and contact information</li>
-                <li>Email address</li>
-                <li>Phone number</li>
-                <li>Educational background</li>
-                <li>Payment information</li>
-            </ul>
+            <div class="prose prose-lg prose-invert max-w-none">
+                <p class="text-gray-400 mb-6">Last updated: April 9, 2025</p>
 
-            <h3 class="text-xl font-semibold mb-2">2.2 Usage Data</h3>
-            <p class="mb-4">We automatically collect certain information about your device and how you interact with our website, including:</p>
-            <ul class="list-disc pl-6 mb-4 space-y-2">
-                <li>IP address</li>
-                <li>Browser type</li>
-                <li>Operating system</li>
-                <li>Pages visited</li>
-                <li>Time spent on pages</li>
-                <li>Referring website</li>
-            </ul>
-        </section>
+                <section class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">1. Introduction</h2>
+                    <p class="mb-4 text-gray-300">FutureTech Academy ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.</p>
+                </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">3. How We Use Your Information</h2>
-            <p class="mb-4">We use the information we collect to:</p>
-            <ul class="list-disc pl-6 mb-4 space-y-2">
-                <li>Provide and maintain our services</li>
-                <li>Process your enrollments and payments</li>
-                <li>Send you important updates and notifications</li>
-                <li>Improve our website and services</li>
-                <li>Respond to your inquiries and support requests</li>
-                <li>Send you marketing communications (with your consent)</li>
-                <li>Comply with legal obligations</li>
-            </ul>
-        </section>
+                <section class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">2. Information We Collect</h2>
+                    <h3 class="text-xl font-semibold mb-2 text-amber-300">2.1 Personal Information</h3>
+                    <p class="mb-4 text-gray-300">We may collect personal information that you voluntarily provide to us when you:</p>
+                    <ul class="list-disc pl-6 mb-4 space-y-2 text-gray-300">
+                        <li>Register for an account</li>
+                        <li>Enroll in our courses</li>
+                        <li>Subscribe to our newsletter</li>
+                        <li>Contact us for support</li>
+                        <li>Participate in surveys or promotions</li>
+                    </ul>
+                    <p class="mb-4 text-gray-300">This information may include:</p>
+                    <ul class="list-disc pl-6 mb-4 space-y-2 text-gray-300">
+                        <li>Name and contact information</li>
+                        <li>Email address</li>
+                        <li>Phone number</li>
+                        <li>Educational background</li>
+                        <li>Payment information</li>
+                    </ul>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">4. Data Security</h2>
-            <p class="mb-4">We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
-            <ul class="list-disc pl-6 mb-4 space-y-2">
-                <li>Encryption of data in transit and at rest</li>
-                <li>Regular security assessments</li>
-                <li>Access controls and authentication</li>
-                <li>Secure data storage</li>
-                <li>Employee training on data protection</li>
-            </ul>
-        </section>
+                    <h3 class="text-xl font-semibold mb-2 text-amber-300">2.2 Usage Data</h3>
+                    <p class="mb-4 text-gray-300">We automatically collect certain information about your device and how you interact with our website, including:</p>
+                    <ul class="list-disc pl-6 mb-4 space-y-2 text-gray-300">
+                        <li>IP address</li>
+                        <li>Browser type</li>
+                        <li>Operating system</li>
+                        <li>Pages visited</li>
+                        <li>Time spent on pages</li>
+                        <li>Referring website</li>
+                    </ul>
+                </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">5. Your Rights</h2>
-            <p class="mb-4">You have the right to:</p>
-            <ul class="list-disc pl-6 mb-4 space-y-2">
-                <li>Access your personal information</li>
-                <li>Correct inaccurate information</li>
-                <li>Request deletion of your information</li>
-                <li>Object to processing of your information</li>
-                <li>Withdraw consent for marketing communications</li>
-                <li>Request data portability</li>
-            </ul>
-            <p class="mb-4">To exercise these rights, please contact us using the information provided in the "Contact Us" section.</p>
-        </section>
+                <section class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">3. How We Use Your Information</h2>
+                    <p class="mb-4 text-gray-300">We use the information we collect to:</p>
+                    <ul class="list-disc pl-6 mb-4 space-y-2 text-gray-300">
+                        <li>Provide and maintain our services</li>
+                        <li>Process your enrollments and payments</li>
+                        <li>Send you important updates and notifications</li>
+                        <li>Improve our website and services</li>
+                        <li>Respond to your inquiries and support requests</li>
+                        <li>Send you marketing communications (with your consent)</li>
+                        <li>Comply with legal obligations</li>
+                    </ul>
+                </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">6. Cookies and Tracking Technologies</h2>
-            <p class="mb-4">We use cookies and similar tracking technologies to:</p>
-            <ul class="list-disc pl-6 mb-4 space-y-2">
-                <li>Remember your preferences</li>
-                <li>Analyze website traffic</li>
-                <li>Improve user experience</li>
-                <li>Deliver targeted advertisements</li>
-            </ul>
-            <p class="mb-4">You can control cookies through your browser settings. However, disabling cookies may affect your ability to use certain features of our website.</p>
-        </section>
+                <section class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">4. Data Security</h2>
+                    <p class="mb-4 text-gray-300">We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
+                    <ul class="list-disc pl-6 mb-4 space-y-2 text-gray-300">
+                        <li>Encryption of data in transit and at rest</li>
+                        <li>Regular security assessments</li>
+                        <li>Access controls and authentication</li>
+                        <li>Secure data storage</li>
+                        <li>Employee training on data protection</li>
+                    </ul>
+                </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">7. Third-Party Services</h2>
-            <p class="mb-4">We may use third-party services that collect, monitor, and analyze information. These services have their own privacy policies and may use cookies and other tracking technologies. We encourage you to review their privacy policies.</p>
-        </section>
+                <section class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">5. Your Rights</h2>
+                    <p class="mb-4 text-gray-300">You have the right to:</p>
+                    <ul class="list-disc pl-6 mb-4 space-y-2 text-gray-300">
+                        <li>Access your personal information</li>
+                        <li>Correct inaccurate information</li>
+                        <li>Request deletion of your information</li>
+                        <li>Object to processing of your information</li>
+                        <li>Withdraw consent for marketing communications</li>
+                        <li>Request data portability</li>
+                    </ul>
+                    <p class="mb-4 text-gray-300">To exercise these rights, please contact us using the information provided in the "Contact Us" section.</p>
+                </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">8. Children's Privacy</h2>
-            <p class="mb-4">Our services are not intended for individuals under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately.</p>
-        </section>
+                <section class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">6. Cookies and Tracking Technologies</h2>
+                    <p class="mb-4 text-gray-300">We use cookies and similar tracking technologies to:</p>
+                    <ul class="list-disc pl-6 mb-4 space-y-2 text-gray-300">
+                        <li>Remember your preferences</li>
+                        <li>Analyze website traffic</li>
+                        <li>Improve user experience</li>
+                        <li>Deliver targeted advertisements</li>
+                    </ul>
+                    <p class="mb-4 text-gray-300">You can control cookies through your browser settings. However, disabling cookies may affect your ability to use certain features of our website.</p>
+                </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">9. Changes to This Privacy Policy</h2>
-            <p class="mb-4">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. We encourage you to review this Privacy Policy periodically for any changes.</p>
-        </section>
+                <section class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">7. Third-Party Services</h2>
+                    <p class="mb-4 text-gray-300">We may use third-party services that collect, monitor, and analyze information. These services have their own privacy policies and may use cookies and other tracking technologies. We encourage you to review their privacy policies.</p>
+                </section>
 
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">10. Contact Us</h2>
-            <p class="mb-4">If you have any questions about this Privacy Policy, please contact us:</p>
-            <ul class="list-none space-y-2">
-                <li>Email: privacy@futuretechacademy.com</li>
-                <li>Phone: +1 (555) 123-4567</li>
-                <li>Address: 123 Tech Street, Digital City, DC 12345</li>
-            </ul>
-        </section>
+                <section class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">8. Children's Privacy</h2>
+                    <p class="mb-4 text-gray-300">Our services are not intended for individuals under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately.</p>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">9. Changes to This Privacy Policy</h2>
+                    <p class="mb-4 text-gray-300">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. We encourage you to review this Privacy Policy periodically for any changes.</p>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">10. Contact Us</h2>
+                    <p class="mb-4 text-gray-300">If you have any questions about this Privacy Policy, please contact us:</p>
+                    <div class="bg-gray-800 border border-gray-700 rounded-lg p-5 text-gray-300">
+                        <ul class="list-none space-y-3">
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                Email: <span class="text-amber-300 ml-2">privacy@futuretechacademy.com</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                Phone: <span class="text-amber-300 ml-2">+1 (555) 123-4567</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                Address: <span class="text-amber-300 ml-2">123 Tech Street, Digital City, DC 12345</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Back Button -->
+            <div class="mt-10 mb-10">
+                <a href="#" onclick="history.back(); return false;" class="inline-flex items-center bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg text-base font-medium transition-colors border border-gray-700 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </div>
     </div>
 </div>

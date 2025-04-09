@@ -3,50 +3,142 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="flex w-full items-center justify-center min-h-screen bg-gray-100">
-    <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-        <h3 class="text-2xl font-bold text-center mb-6">Login</h3>
+<div class="flex w-full items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 py-8 px-4">
+    <div class="w-full max-w-md">
+        <!-- Header -->
+        <div class="flex flex-col items-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-amber-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-amber-400 text-sm font-semibold tracking-wider uppercase">Student Management Portal</span>
+            <h2 class="text-2xl font-bold text-center text-white mt-2">Login to Your Account</h2>
+            <div class="h-1 w-24 bg-gradient-to-r from-amber-500 to-amber-300 rounded-full mt-4"></div>
+        </div>
 
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                <span class="block sm:inline">@TempData["SuccessMessage"]</span>
-                <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3" data-bs-dismiss="alert" aria-label="Close">
-                    <svg class="fill-current h-6 w-6 text-green-700" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <title>Close</title>
-                        <path d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 00-1.414 1.414L8.586 8.586l-2.934 2.934a1 1 0 101.414 1.414L10 10.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
-                    </svg>
-                </button>
+        <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-xl overflow-hidden">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="bg-green-900/30 border border-green-500 text-green-200 px-4 py-3 m-4 rounded-lg relative flex justify-between items-center" role="alert">
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="block sm:inline">@TempData["SuccessMessage"]</span>
+                    </div>
+                    <button type="button" class="text-green-300 hover:text-green-100" data-bs-dismiss="alert" aria-label="Close">
+                        <svg class="fill-current h-5 w-5" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <title>Close</title>
+                            <path d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.172 7.066 4.238a1 1 0 00-1.414 1.414L8.586 8.586l-2.934 2.934a1 1 0 101.414 1.414L10 10.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
+                        </svg>
+                    </button>
+                </div>
+            }
+
+            <div class="p-6 md:p-8">
+                <div asp-validation-summary="All" class="text-red-400 text-sm mb-6  rounded-lg "></div>
+
+                <form asp-action="Login" method="post" class="space-y-6">
+                    <div>
+                        <label asp-for="Email" class="block text-sm font-medium text-amber-400 mb-1">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <input asp-for="Email"
+                                   class="pl-10 block w-full rounded-md bg-gray-900/50 border border-gray-600 text-white shadow-sm
+                                py-3 px-4
+                                focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500
+                                hover:border-gray-500 transition-colors
+                                placeholder-gray-500"
+                                   placeholder="student@example.com" />
+                        </div>
+                        <span asp-validation-for="Email" class="mt-1 text-sm text-red-400"></span>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <label asp-for="Password" class="block text-sm font-medium text-amber-400">Password</label>
+                            <a href="/account/forgotpassword" class="text-xs text-amber-400 hover:text-amber-300 transition-colors">Forgot Password?</a>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </div>
+                            <input asp-for="Password"
+                                   class="pl-10 block w-full rounded-md bg-gray-900/50 border border-gray-600 text-white shadow-sm
+                                py-3 px-4
+                                focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500
+                                hover:border-gray-500 transition-colors
+                                placeholder-gray-500"
+                                   placeholder="••••••••" />
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <button type="button" id="togglePassword" class="text-amber-500/60 hover:text-amber-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Password" class="mt-1 text-sm text-red-400"></span>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox" class="rounded bg-gray-700 border-gray-600 text-amber-500 focus:ring-amber-500 focus:ring-offset-gray-800 focus:ring-offset-1">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-300">Remember me</label>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-gray-900 py-3 px-4 rounded-lg transition-colors font-medium shadow-md flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                            </svg>
+                            Login
+                        </button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-6 text-sm text-gray-400 border-t border-gray-700 pt-5">
+                    <p>Don't have an account? <a asp-action="SignUp" class="text-amber-400 hover:text-amber-300 transition-colors">Sign Up</a></p>
+                </div>
             </div>
-        }
+        </div>
 
-        <form asp-action="Login" method="post" class="space-y-4">
-            <div asp-validation-summary="All" class="text-red-500 text-sm mb-2"></div>
-
-            <div>
-                <label asp-for="Email" class="block text-gray-700 font-medium mb-1"></label>
-                <input asp-for="Email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
-                <span asp-validation-for="Email" class="text-red-500 text-sm"></span>
-            </div>
-
-            <div>
-                <label asp-for="Password" class="block text-gray-700 font-medium mb-1"></label>
-                <input asp-for="Password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
-                <span asp-validation-for="Password" class="text-red-500 text-sm"></span>
-            </div>
-
-            <div class="text-center">
-                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-200">Login</button>
-            </div>
-        </form>
-
-        <div class="text-center mt-4 text-sm text-gray-600">
-            <p>Don't have an account? <a asp-action="SignUp" class="text-blue-500 hover:underline">Sign Up</a></p>
+        <!-- Additional links -->
+        <div class="flex justify-center space-x-6 mt-6 text-xs text-gray-500">
+            <a href="#" class="hover:text-gray-400 transition-colors">Terms of Service</a>
+            <a href="#" class="hover:text-gray-400 transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-gray-400 transition-colors">Contact Support</a>
         </div>
     </div>
 </div>
 
 @section Scripts {
+    <script>
+        // Toggle password visibility
+        document.getElementById('togglePassword')?.addEventListener('click', function () {
+            const password = document.getElementById('Password');
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            // Change icon based on password visibility
+            const icon = this.querySelector('svg');
+            if (type === 'password') {
+                icon.innerHTML = `
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        `;
+            } else {
+                icon.innerHTML = `
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                        `;
+            }
+        });
+    </script>
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
