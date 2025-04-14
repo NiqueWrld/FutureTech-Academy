@@ -6,7 +6,7 @@ using FutureTech_Academy.Models;
 using System.Security.Claims;
 using Firebase.Auth;
 
-namespace FutureTech_Academy.Controllers
+namespace FutureTech_Academy.Controllers.Auth
 {
     [Route("[controller]")]
     public class AccountController : Controller
@@ -114,4 +114,4 @@ namespace FutureTech_Academy.Controllers
             return RedirectToAction("Login");
         }
     }
-} 
+}

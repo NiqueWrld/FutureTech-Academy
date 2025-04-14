@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FutureTech_Academy.Controllers;
+namespace FutureTech_Academy.Controllers.Auth;
 
 [Authorize]
 [Route("/[controller]/[action]")]

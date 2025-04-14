@@ -58,10 +58,8 @@ namespace FutureTech_Academy.Controllers
             {
                 try
                 {
-                    // Generate a new ID for the student
                     student.id = Guid.NewGuid().ToString();
-                    
-                    // Handle profile image upload if provided
+                   
                     if (profileImage != null && profileImage.Length > 0)
                     {
                         Console.WriteLine($"Processing profile image upload for student {student.id}");
@@ -75,7 +73,7 @@ namespace FutureTech_Academy.Controllers
                             return View(student);
                         }
 
-                        if (profileImage.Length > 5 * 1024 * 1024) // 5MB limit
+                        if (profileImage.Length > 5 * 1024 * 1024)
                         {
                             ModelState.AddModelError("ProfileImage", "Image size should not exceed 5MB.");
                             return View(student);
@@ -85,13 +83,10 @@ namespace FutureTech_Academy.Controllers
                         Console.WriteLine($"Profile image uploaded successfully. URL: {student.ProfileImageUrl}");
                     }
 
-                    // Create the student and get the created student back
                     var createdStudent = await _studentService.CreateStudentAsync(student);
                     
-                    // Set success message
                     TempData["SuccessMessage"] = $"Student {createdStudent.FirstName} {createdStudent.LastName} created successfully!";
                     
-                    // Redirect to the list view
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
@@ -136,7 +131,6 @@ namespace FutureTech_Academy.Controllers
             {
                 try
                 {
-                    // Handle profile image upload if provided
                     if (profileImage != null && profileImage.Length > 0)
                     {
                         Console.WriteLine($"Processing profile image upload for student {student.id}");
@@ -150,7 +144,7 @@ namespace FutureTech_Academy.Controllers
                             return View(student);
                         }
 
-                        if (profileImage.Length > 5 * 1024 * 1024) // 5MB limit
+                        if (profileImage.Length > 5 * 1024 * 1024)
                         {
                             ModelState.AddModelError("ProfileImage", "Image size should not exceed 5MB.");
                             return View(student);
@@ -206,7 +200,6 @@ namespace FutureTech_Academy.Controllers
             return View("Index", students);
         }
 
-        // GET: Student/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (string.IsNullOrEmpty(id))

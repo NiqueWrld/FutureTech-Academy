@@ -40,7 +40,6 @@ public class AuthService(FirebaseAuthClient firebaseAuth) : IAuthService
         }
         catch (Exception ex)
         {
-            // Log the exception if needed
             Console.WriteLine($"Error during sign out: {ex.Message}");
         }
     }
